@@ -51,7 +51,7 @@ def extract_data(engine):
         orders = pd.read_sql("SELECT * FROM orders", engine)
         order_items = pd.read_sql("SELECT * FROM order_items", engine)
 
-       except Exception:
+    except Exception:
         # Fallback for CI (no database available)
         customers = pd.DataFrame({
             "customer_id": [1, 2, 3, 4],
