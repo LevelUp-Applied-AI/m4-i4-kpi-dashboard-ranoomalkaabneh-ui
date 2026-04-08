@@ -1,0 +1,24 @@
+{
+  "thresholds": {
+    "total_revenue": {
+      "green": 45000,
+      "yellow": 35000
+    },
+    "average_order_value": {
+      "green": 100,
+      "yellow": 80
+    },
+    "peak_monthly_revenue": {
+      "green": 4500,
+      "yellow": 3000
+    },
+    "peak_monthly_order_volume": {
+      "green": 40,
+      "yellow": 25
+    },
+    "top_city_revenue": {
+      "green": 14000,
+      "yellow": 9000
+    }
+  }
+}
