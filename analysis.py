@@ -51,43 +51,44 @@ def extract_data(engine):
         orders = pd.read_sql("SELECT * FROM orders", engine)
         order_items = pd.read_sql("SELECT * FROM order_items", engine)
 
-    except Exception:
-        # Fallback for CI (no database)
+       except Exception:
+        # Fallback for CI (no database available)
         customers = pd.DataFrame({
-            "customer_id": [1, 2],
-            "customer_name": ["A", "B"],
-            "email": ["a@test.com", "b@test.com"],
-            "city": ["Amman", "Irbid"],
-            "registration_date": ["2024-01-01", "2024-02-01"]
+            "customer_id": [1, 2, 3, 4],
+            "customer_name": ["A", "B", "C", "D"],
+            "email": ["a@test.com", "b@test.com", "c@test.com", "d@test.com"],
+            "city": ["Amman", "Irbid", "Amman", "Irbid"],
+            "registration_date": ["2024-01-01", "2024-02-01", "2024-03-01", "2024-04-01"]
         })
 
         products = pd.DataFrame({
-            "product_id": [1, 2],
-            "product_name": ["P1", "P2"],
-            "category": ["Cat1", "Cat2"],
-            "unit_price": [10, 20]
+            "product_id": [1, 2, 3, 4],
+            "product_name": ["P1", "P2", "P3", "P4"],
+            "category": ["Cat1", "Cat1", "Cat2", "Cat2"],
+            "unit_price": [10, 12, 20, 25]
         })
 
         orders = pd.DataFrame({
-            "order_id": [1, 2],
-            "customer_id": [1, 2],
-            "order_date": ["2024-01-01", "2024-01-02"],
-            "status": ["completed", "completed"]
+            "order_id": [1, 2, 3, 4],
+            "customer_id": [1, 2, 3, 4],
+            "order_date": ["2024-01-01", "2024-01-02", "2024-02-01", "2024-02-02"],
+            "status": ["completed", "completed", "completed", "completed"]
         })
 
         order_items = pd.DataFrame({
-            "item_id": [1, 2],
-            "order_id": [1, 2],
-            "product_id": [1, 2],
-            "quantity": [2, 3]
+            "item_id": [1, 2, 3, 4, 5, 6, 7, 8],
+            "order_id": [1, 1, 2, 2, 3, 3, 4, 4],
+            "product_id": [1, 3, 2, 4, 1, 4, 2, 3],
+            "quantity": [2, 1, 3, 1, 1, 2, 2, 2]
         })
-
     return {
         "customers": customers,
         "products": products,
         "orders": orders,
         "order_items": order_items,
-    } 
+    }
+
+
 def compute_kpis(data_dict):
     """Compute the 5 KPIs defined in kpi_framework.md.
 
